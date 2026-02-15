@@ -7,26 +7,24 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 
-<meta property="og:title" content="  yaser" />
+<meta property="og:title" content="yaser" />
 <meta property="og:description" content="یاد و خاطره عزیز از دست رفته‌مان گرامی باد" />
 
 <meta property="og:type" content="website" />
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn', Tahoma, Arial, sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',Tahoma,Arial,sans-serif}
 html,body{height:100%;margin:0}
-
-
-body{ -webkit-text-size-adjust:100%; }
+body{-webkit-text-size-adjust:100%}
 
 body{
   min-height:100vh;
   width:100%;
-  background-image: url('2.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-image:url('2.webp');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
   background-color:#000;
   display:flex;
   justify-content:center;
@@ -34,9 +32,8 @@ body{
   overflow-x:hidden;
 }
 
-
 @media (max-width:900px){
-  body{ background-attachment: scroll; }
+  body{ background-attachment:scroll; }
 }
 
 .mini{
@@ -47,7 +44,7 @@ body{
   overflow:hidden;
   box-shadow:0 25px 55px rgba(0,0,0,.55);
   cursor:pointer;
- 
+  background:url('1.jpg') center/cover no-repeat;
 }
 
 .mini::after{
@@ -85,8 +82,6 @@ body{
   font-size:14px;
 }
 
-
-
 .overlay{
   position:fixed;
   inset:0;
@@ -98,7 +93,6 @@ body{
   z-index:999;
 }
 .overlay.show{display:flex}
-
 
 .modal{
   width:min(1100px,96vw);
@@ -120,7 +114,6 @@ body{
   display:flex;
   flex-direction:column;
 }
-
 
 @supports not (height: 1dvh){
   .modal{ height:min(92vh, 860px); }
@@ -148,112 +141,52 @@ body{
   position:relative;
   z-index:1;
   flex:0 0 auto;
+  overflow:hidden;
 }
+
+/* اسلایدر هدر (سه عکس) */
+.header-slider{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.header-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity 1s ease, transform 3s ease;
+}
+.header-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
 
 .modal-header::after{
   content:"";
   position:absolute; inset:0;
+  z-index:2;
   background:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.72));
 }
 
-.title-wrap{
+
+.close-hint{
   position:absolute;
-  inset:0;
-  z-index:2;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:14px;
-  padding:18px 22px;
-  color:#fff;
-}
-
-.title-wrap h2{
-  font-size:32px;
-  margin-bottom:6px;
-  letter-spacing:-.2px;
-  text-shadow:0 10px 26px rgba(0,0,0,.55);
-}
-
-.title-wrap .sub{
-  font-size:15px;
-  line-height:1.9;
-  opacity:.92;
-  max-width:680px;
-  text-shadow:0 10px 26px rgba(0,0,0,.45);
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.btn{
-  border:none;
-  background:rgba(255,255,255,.12);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:14px;
-  cursor:pointer;
-  transition:.2s ease;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.18);
-  white-space:nowrap;
-}
-.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.16) }
-.btn:active{ transform:translateY(0); opacity:.9 }
-
-.photo-frame{
-  position:absolute;
-  left:50%;
-  top:62%;
-  transform:translate(-50%,-50%);
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  overflow:hidden;
   z-index:3;
-  background:#fff;
-
-  padding:8px;
-  border:3px solid rgba(212,175,55,.8);
-
-  box-shadow:
-    0 30px 70px rgba(0,0,0,.65),
-    0 0 0 6px rgba(255,255,255,.9),
-    0 0 40px rgba(212,175,55,.35);
+  left:16px;
+  top:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:13px;
+  color:#fff;
+  background:rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);
 }
-
-.photo-frame::before{
-  content:"";
-  position:absolute;
-  inset:-12px;
-  border-radius:50%;
-  background:radial-gradient(circle at 50% 30%,
-    rgba(255,255,255,.45),
-    transparent 60%);
-  pointer-events:none;
-}
-
-.photo-frame::after{
-  content:"";
-  position:absolute;
-  inset:-6px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.6);
-  opacity:.6;
-  pointer-events:none;
-}
-
-.photo-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-
 
 .modal-body{
   position:relative;
@@ -359,16 +292,6 @@ body{
   }
 
   .modal-header{ height:320px; }
-  .title-wrap{ padding:16px 16px; align-items:flex-end; }
-  .title-wrap h2{ font-size:26px; }
-  .title-wrap .sub{ font-size:14px; }
-
-  .photo-frame{
-    width:170px;
-    height:170px;
-    top:64%;
-  }
-
   .modal-body{ padding:26px 14px 18px; }
   .content{ padding:22px 16px 16px; }
   .name{ font-size:30px; }
@@ -392,18 +315,12 @@ body{
   <div class="modal" role="dialog" aria-modal="true" aria-label="کارت ترحیم">
 
     <div class="modal-header">
-      <div class="title-wrap">
-        
-
-        <div class="actions">
-         
-        </div>
-      </div>
-
-      <div class="photo-frame">
-        <img src="4.jpg" alt="عکس مرحوم">
-      </div>
-    </div>
+      
+      <div class="header-slider" aria-hidden="true">
+        <img class="header-slide active" src="4.jpg" alt="">
+        <img class="header-slide" src="5.jpg" alt="">
+        <img class="header-slide" src="6.jpg" alt="">
+      
 
     <div class="modal-body">
       <div class="content">
@@ -442,45 +359,64 @@ body{
   </div>
 </div>
 
-<audio id="bgMusic" src="44.mp3" preload="auto" loop></audio>
+
+<audio id="bgMusic" src="44.mp3" preload="auto" loop playsinline></audio>
 
 <script>
 const openCard = document.getElementById('openCard');
 const overlay  = document.getElementById('overlay');
-const closeBtn = document.getElementById('closeBtn');
 const bgMusic  = document.getElementById('bgMusic');
 
-let musicStarted = false;
+const headerSlides = Array.from(document.querySelectorAll('.header-slide'));
+let sliderIndex = 0;
+let sliderTimer = null;
 
-async function safePlay(){
-  try{
-    bgMusic.volume = 0.5;
-    await bgMusic.play();
-    musicStarted = true;
-  }catch(e){
-  
+function showSlide(i){
+  headerSlides.forEach((s, idx)=> s.classList.toggle('active', idx === i));
+}
+
+function startHeaderSlider(){
+  if(headerSlides.length < 2) return;
+  if(sliderTimer) return;
+  sliderTimer = setInterval(()=>{
+    sliderIndex = (sliderIndex + 1) % headerSlides.length;
+    showSlide(sliderIndex);
+  }, 3000);
+}
+
+function stopHeaderSlider(){
+  if(sliderTimer){
+    clearInterval(sliderTimer);
+    sliderTimer = null;
   }
 }
+
 
 function openModal(){
   overlay.classList.add('show');
   overlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
-
- 
-  if(!musicStarted){
-    safePlay();
-  }
+  startHeaderSlider();
 }
 
 function closeModal(){
   overlay.classList.remove('show');
   overlay.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  stopHeaderSlider();
 }
 
-openCard.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
+
+openCard.addEventListener('click', () => {
+  openModal();
+
+ 
+  try{
+    bgMusic.volume = 0.5;
+    bgMusic.currentTime = bgMusic.currentTime || 0;
+    bgMusic.play().catch(()=>{ /* اگر مرورگر اجازه نداد، ساکت */ });
+  }catch(e){}
+});
 
 overlay.addEventListener('click', (e)=>{
   if(e.target===overlay) closeModal();
@@ -491,9 +427,8 @@ document.addEventListener('keydown', (e)=>{
 });
 
 
-document.querySelector('.modal').addEventListener('click', (e)=>e.stopPropagation());
+showSlide(sliderIndex);
 </script>
 
 </body>
 </html>
-
