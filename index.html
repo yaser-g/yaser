@@ -7,11 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 
-<meta property="og:title" content="yaser" />
-<meta property="og:description" content="یاد و خاطره عزیز از دست رفته‌مان گرامی باد" />
-
-<meta property="og:type" content="website" />
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',Tahoma,Arial,sans-serif}
 html,body{height:100%;margin:0}
@@ -20,10 +15,7 @@ body{-webkit-text-size-adjust:100%}
 body{
   min-height:100vh;
   width:100%;
-  background-image:url('2.webp');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background:url('2.webp') center/cover no-repeat;
   background-attachment:fixed;
   background-color:#000;
   display:flex;
@@ -31,30 +23,24 @@ body{
   align-items:center;
   overflow-x:hidden;
 }
-
-@media (max-width:900px){
-  body{ background-attachment:scroll; }
-}
+@media (max-width:900px){ body{ background-attachment:scroll; } }
 
 .mini{
   width:min(720px,96vw);
   height:460px;
   border-radius:22px;
-  position:relative;
   overflow:hidden;
   box-shadow:0 25px 55px rgba(0,0,0,.55);
   cursor:pointer;
-  background:url('1.jpg') center/cover no-repeat;
+  background:url() center/cover no-repeat;
+  position:relative;
 }
-
 .mini::after{
   content:"";
-  position:absolute;
-  inset:0;
+  position:absolute; inset:0;
   background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.05));
   backdrop-filter:blur(12px);
 }
-
 .mini-content{
   position:absolute; inset:0;
   display:flex;
@@ -65,15 +51,11 @@ body{
   color:#fff;
   z-index:1;
 }
-
 .mini h1{font-size:42px;margin-bottom:16px}
 .mini p{opacity:.92;font-size:18px;line-height:1.9}
-
 .hint{
   margin-top:18px;
   display:inline-flex;
-  gap:10px;
-  align-items:center;
   padding:10px 14px;
   border:1px solid rgba(255,255,255,.26);
   border-radius:999px;
@@ -114,71 +96,46 @@ body{
   display:flex;
   flex-direction:column;
 }
-
 @supports not (height: 1dvh){
   .modal{ height:min(92vh, 860px); }
 }
-
 .overlay.show .modal{
   transform:translateY(0) scale(1);
   opacity:1;
 }
 
-.modal::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(900px 380px at 50% 0%, rgba(255,255,255,.16), transparent 60%),
-    radial-gradient(600px 300px at 10% 30%, rgba(255,255,255,.08), transparent 60%),
-    radial-gradient(600px 300px at 90% 35%, rgba(255,255,255,.07), transparent 60%);
-  pointer-events:none;
-  z-index:0;
-}
 
 .modal-header{
   height:300px;
   position:relative;
-  z-index:1;
   flex:0 0 auto;
   overflow:hidden;
 }
 
-/* اسلایدر هدر (سه عکس) */
-.header-slider{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
+
+.header-slider{position:absolute; inset:0;}
 .header-slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+  position:absolute; inset:0;
+  width:100%; height:100%;
   object-fit:cover;
   opacity:0;
   transform:scale(1.03);
   transition:opacity 1s ease, transform 3s ease;
 }
-.header-slide.active{
-  opacity:1;
-  transform:scale(1);
-}
+.header-slide.active{opacity:1; transform:scale(1);}
 
 
 .modal-header::after{
   content:"";
   position:absolute; inset:0;
-  z-index:2;
   background:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.72));
 }
 
 
 .close-hint{
   position:absolute;
+  left:16px; top:14px;
   z-index:3;
-  left:16px;
-  top:14px;
   padding:8px 12px;
   border-radius:999px;
   font-size:13px;
@@ -188,13 +145,16 @@ body{
   backdrop-filter:blur(10px);
 }
 
+
 .modal-body{
-  position:relative;
-  z-index:2;
   flex:1 1 auto;
   overflow:auto;
   -webkit-overflow-scrolling:touch;
-  padding:34px 28px 32px;
+  padding:18px 18px 22px;
+  position:relative;
+  z-index:5;               
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(10px);
 }
 
 .modal-body::-webkit-scrollbar{width:10px}
@@ -206,7 +166,6 @@ body{
   border-radius:24px;
   padding:26px 22px 20px;
   color:#fff;
-
   background:linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.08));
   border:1px solid rgba(255,255,255,.22);
   backdrop-filter:blur(18px);
@@ -219,7 +178,6 @@ body{
   margin-top:4px;
   margin-bottom:12px;
   text-align:center;
-  letter-spacing:-.3px;
   text-shadow:0 14px 30px rgba(0,0,0,.35);
 }
 .name::after{
@@ -263,12 +221,7 @@ body{
   gap:12px;
   margin-top:6px;
 }
-
-.label{
-  opacity:.85;
-  font-size:13px;
-  margin-bottom:6px;
-}
+.label{opacity:.85;font-size:13px;margin-bottom:6px}
 
 .footer-note{
   text-align:center;
@@ -280,21 +233,15 @@ body{
   background:rgba(0,0,0,.18);
 }
 
-@media (max-width:900px){
-  .grid{grid-template-columns:1fr}
-}
-
+@media (max-width:900px){ .grid{grid-template-columns:1fr} }
 @media (max-width:600px){
   .mini{height:420px}
   .modal{ height:92dvh; }
-  @supports not (height: 1dvh){
-    .modal{ height:92vh; }
-  }
-
-  .modal-header{ height:320px; }
-  .modal-body{ padding:26px 14px 18px; }
-  .content{ padding:22px 16px 16px; }
-  .name{ font-size:30px; }
+  @supports not (height: 1dvh){ .modal{ height:92vh; } }
+  .modal-header{height:320px}
+  .modal-body{padding:14px 12px 16px}
+  .content{padding:22px 16px 16px}
+  .name{font-size:30px}
 }
 </style>
 </head>
@@ -315,18 +262,18 @@ body{
   <div class="modal" role="dialog" aria-modal="true" aria-label="کارت ترحیم">
 
     <div class="modal-header">
-      
       <div class="header-slider" aria-hidden="true">
         <img class="header-slide active" src="4.jpg" alt="">
         <img class="header-slide" src="5.jpg" alt="">
         <img class="header-slide" src="6.jpg" alt="">
+      </div>
       
+    </div>
 
     <div class="modal-body">
       <div class="content">
 
         <div class="name">یاسر قندالی</div>
-
         <div class="quote">«هرگز نمی‌میرد آنکه دلش زنده به عشق است»</div>
 
         <div class="box">
@@ -349,16 +296,13 @@ body{
 
         <div class="divider"></div>
 
-        <div class="footer-note">
-          روحش شاد و یادش گرامی
-        </div>
+        <div class="footer-note">روحش شاد و یادش گرامی</div>
 
       </div>
     </div>
 
   </div>
 </div>
-
 
 <audio id="bgMusic" src="44.mp3" preload="auto" loop playsinline></audio>
 
@@ -374,7 +318,6 @@ let sliderTimer = null;
 function showSlide(i){
   headerSlides.forEach((s, idx)=> s.classList.toggle('active', idx === i));
 }
-
 function startHeaderSlider(){
   if(headerSlides.length < 2) return;
   if(sliderTimer) return;
@@ -383,14 +326,9 @@ function startHeaderSlider(){
     showSlide(sliderIndex);
   }, 3000);
 }
-
 function stopHeaderSlider(){
-  if(sliderTimer){
-    clearInterval(sliderTimer);
-    sliderTimer = null;
-  }
+  if(sliderTimer){ clearInterval(sliderTimer); sliderTimer = null; }
 }
-
 
 function openModal(){
   overlay.classList.add('show');
@@ -398,7 +336,6 @@ function openModal(){
   document.body.style.overflow='hidden';
   startHeaderSlider();
 }
-
 function closeModal(){
   overlay.classList.remove('show');
   overlay.setAttribute('aria-hidden','true');
@@ -406,15 +343,11 @@ function closeModal(){
   stopHeaderSlider();
 }
 
-
 openCard.addEventListener('click', () => {
   openModal();
-
- 
   try{
     bgMusic.volume = 0.5;
-    bgMusic.currentTime = bgMusic.currentTime || 0;
-    bgMusic.play().catch(()=>{ /* اگر مرورگر اجازه نداد، ساکت */ });
+    bgMusic.play().catch(()=>{});
   }catch(e){}
 });
 
@@ -425,7 +358,6 @@ overlay.addEventListener('click', (e)=>{
 document.addEventListener('keydown', (e)=>{
   if(e.key==='Escape') closeModal();
 });
-
 
 showSlide(sliderIndex);
 </script>
